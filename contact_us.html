@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Daksh Pathology Laboratory</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
+    <!-- Icon -->
+    <link rel="stylesheet" href="assets/fonts/line-icons.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.css">
+    
+    <!-- Animate -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" />
+
+    <script>
+      window.onload = function () {
+           loadJobs();
+       }
+       var baseurl = "";
+  
+       function loadJobs() {
+        var xmlhttp = new XMLHttpRequest();
+         xmlhttp.open("GET", baseurl + "/jobs", true);
+         xmlhttp.onreadystatechange = function () {
+             if (xmlhttp.status === 200) {
+              var jobs = JSON.parse(xmlhttp.responseText);
+              
+              let dropdown1 = document.getElementById('candidate_job_id');
+              dropdown1.length = 0;
+              let defaultOption = document.createElement('option');
+              defaultOption.text = 'Select available job';
+              dropdown1.add(defaultOption);
+              dropdown1.selectedIndex = 0;
+
+              for (var i = 0; i < jobs.data.length; i++) {
+                var option;
+                 option = document.createElement('option');
+                 option.text = jobs.data[i].job_title;
+                 option.value = jobs.data[i].job_id;
+                 dropdown1.add(option);
+
+              } 
+            }
+           
+         };
+         xmlhttp.send();
+     }
+    </script>
+   </head>
+ <body>
+
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar22 navbar-expand-md fixed-top scrolling-navbar">
+        <div class="container nav-mobile-container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a href="index.html" class="navbar-brand"><img src="assets/img/pathlogo.png" alt=""></a>   
+          <div class="labname">     
+            <h5>Daksh Pathology Laboratory</h5>
+      </div>       
+                
+          <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+            <i class="lni-menu"></i>
+          </button> -->
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about_us.html">
+                  About Us
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Why Us.html">
+                  Why Us
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+          <div class="dropdown" style="padding-left: 20px;">
+            <div class="login_image2">
+            <a href="#" data-toggle="dropdown"><img height="65px" width="65px" src="assets/img/menu2.png"></a>
+            </div>
+            <div class="dropdown-menu menu_dropdown">
+              <a href="index.html" class="dropdown-item "><img class="menu_icon" src="assets/img/menu/Vectorhome.png" alt="">Home</a>
+              <a href="about_us.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorabout.png" alt="">About Us</a>
+              <a href="Why Us.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorcareers.png" alt="">Why Us</a>
+             
+              <a href="gallery.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorgall.png" alt="">Gallery</a>
+              <a href="our_teams.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorour_team.png" alt="">Our Team</a>
+              <a href="contact_us.html" class="dropdown-item active"><img class="menu_icon" src="assets/img/menu/Vectorcontact_us.png" alt="">Contact Us</a>
+            </div>
+           </div>
+        </div>
+      </nav>
+      <!-- Navbar End -->
+
+      <!-- Hero Area Start -->
+      <div id="hero-area6" class="hero-area6">
+        <div class="container">      
+          <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+              <div class="contents">
+              
+              </div>
+            </div>
+           </div> 
+        </div> 
+      </div>
+      <!-- Hero Area End -->
+
+    </header>
+    <!-- Header Area wrapper End -->
+
+    <!-- Services Section Start -->
+    <section id="contact" class="section-padding">    
+        <div class="contact_container" style="background-color: #fff;">
+            <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.3s">   
+              <div class="col-lg-12" style="padding-top: 0%; margin-top: 0%;">
+                <div class="map2">
+                  <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7566.349710820315!2d73.93287524232798!3d18.52099886098709!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb3372703df7a8e2c!2sGenericplus%20Pharmacy%20Pvt.%20Ltd.%2C%20Pune!5e0!3m2!1sen!2sin!4v1639804647790!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+                  <object style="border:0;" data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.427405870494!2d73.7949715!3d18.5095781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfb32cec18e3%3A0xe72e642f6574d6a6!2sDaksh%20Pathology%20Laboratory!5e0!3m2!1sen!2sin!4v1662615049887!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></object>
+                </div>
+              </div>
+              
+              <div class="col-lg-12 about_heading2">
+                <div class="row">
+                  <h2 class="section-title2">Daksh Pathology Laboratory</h2>
+                  <h2 class="section-subtitle3">Veronica Building,94/95, Paud Road, Bhusari Colony, Kothrud, Pune, Maharashtra 411038.</h2>
+                  
+                  <div class="row col-md-12 about_heading22">
+                  <div class="col-md-4 about_mail">
+                     <div  class="form-control">
+                        <img src="assets/img/mail2.png" alt="">
+                        <a href = "mailto:Daksh21@gmail.com"><input disabled style="background-color: white; border: white; cursor: pointer; position: relative; text-align: center; color: black;" value="Daksh21@gmail.com"></a>
+                     </div>
+                  </div>
+                  <div class="col-md-4 about_call">
+                    <div  class="form-control">
+                       <img src="assets/img/Vectorcall.png" style="padding-top: 0px;" alt="">
+                       <a href="tel:+91000000"><input disabled style="background-color: white;border: white; cursor: pointer; position: relative; text-align: center; color: black;" value="+91 000000000"></a>
+                    </div>
+                  </div>
+                </div>
+                </div>
+             </div>
+            </div>
+            </div>
+      </section>
+    
+
+  
+    <section id="services2" class="section-padding">
+      <div class="container">
+        <div class="section-header" style="padding-bottom: 0%;margin-bottom: 0%; margin-top: 0%;">
+            <h2 class="section-title">Contact Us</h2>
+            
+        </div>
+           <div class="row contactus" style="padding-bottom: 2%; padding-top: 0%;">
+              <div class="col-lg-5 become_partner2" style="padding-top: 0%; margin-top: 0%;">
+                <div class="div_whyus3">
+                  <div class="parent wow fadeInDown" data-wow-delay="0.3s">
+                  <div>
+                  
+                  </div>
+                  
+                </div>   
+                </div>
+                <div class="div_whyus4">
+                  <div class="parent wow fadeInDown" data-wow-delay="0.3s">
+                      <div>
+                        <img class="image56" src="assets/img/contact_us/par.png" alt="">
+                      </div>
+                      <div>
+                        <img class="image111" src="assets/img/about/mm2.png" alt="">
+                      </div>
+                       <div>
+                          <img class="image110" src="assets/img/about/mm1.png" alt="">
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            <div class="col-lg-7">
+                <div class="contact-block">
+                   <form id="contactForm">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input type="text" placeholder="Full Name*" id="name" class="form-control" required data-error="Please enter your full name">
+                          <div class="help-block with-errors"></div>
+                        </div>
+                      </div>
+                     
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="tel" placeholder="+91 Mobile Number" id="mobile" class="form-control" name="mobile" required data-error="Please enter your mobile address">
+                          <div class="help-block with-errors"></div>
+                        </div> 
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="email" name="email" placeholder="Email Address*" required data-error="Please enter your email address">
+                        <div class="help-block with-errors"></div>
+                        </div> 
+                      </div>
+                    
+                       <div class="col-md-12">
+                        <div class="form-group">
+                          <input type="text" placeholder="Full Address with City*" id="full_address" name="full_address" class="form-control" required data-error="Please enter full address">
+                          <div class="help-block with-errors"></div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <select name="purpose" id="purpose">
+                            <option value="">Select State*</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                           
+                        </select>
+                        </div>
+                        <div class="help-block with-errors"></div>
+                      </div>
+                                     
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="tel" class="form-control" id="pincode" name="pincode" placeholder="Pincode*" required data-error="Please enter your pincode">
+                        <div class="help-block with-errors"></div>
+                        </div> 
+                      </div>
+                                       
+                        <div class="submit_button">
+                          <button class="btn btn-common" id="form-submit" type="submit">Submit</button>
+                          <div id="msgSubmit" class="h3 text-center hidden"></div> 
+                          <div class="clearfix"></div> 
+                        </div>
+                      </div>
+                    </div>            
+                  </form>
+            </div>
+            <div class="col-lg-5 become_partner1" style="padding-top: 0%; margin-top: 0%;">
+              <div class="div_whyus3">
+                <div class="parent wow fadeInDown" data-wow-delay="0.3s">
+                <div>
+                  <img class="image5" style="padding-top: 6%; height: 330px;" src="assets/img/contact_us/par.png" alt="">
+                </div>
+                 <div>
+                    
+                 </div>
+              </div>   
+              </div>
+              <div class="div_whyus4">
+                <div class="parent wow fadeInDown" data-wow-delay="0.3s">
+                    <div>
+                      <img class="image5" src="assets/img/contact_us/par.png" alt="">
+                    </div>
+                    <div>
+                      <img class="image11" src="assets/img/about/mm2.png" alt="">
+                    </div>
+                     <div>
+                        <img class="image10" src="assets/img/about/mm1.png" alt="">
+                      </div>
+                  </div>
+                </div>
+                
+            </div>
+           </div>
+         </div>
+    
+    
+
+
+    <!-- Footer Section Start -->
+    <footer id="footer" class="footer-area section-padding">
+      <div class="container">
+        <div class="container">
+          <div class="row">
+           
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+              <h3 class="footer-titel">About</h3>
+              <ul class="footer-link2">
+                <li><a href="about_us.html">About Us</a></li>
+                
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+              <h3 class="footer-titel">Policies</h3>
+              <ul class="footer-link2">
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Terms & Condition</a></li>
+                <li><a href="">Refund & Return Policy</a></li>
+               </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 social_accounts">
+              <h3 class="footer-titel">Social Media</h3>
+              <ul class="footer-link2">
+                <li><a href=""><i class="fa-brands fa-facebook-square mr-2"></i> Facebook</a></li>
+                <li><a href=""><i class="fa-brands fa-instagram mr-2"></i> Instagram</a></li>
+                <li><a href=""><i class="fa-brands fa-linkedin mr-2"></i> LinkedIn</a></li>
+                <li><a href=""><i class="fa-brands fa-twitter-square mr-2"></i> Twitter</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 social_accounts2">
+              <h3 class="footer-titel">Social Media</h3>
+              <div class="row">
+                <a href=""><img class="img-fluid2" src="assets/img/footer/fb.png" alt=""></a>
+                <a href=""><img class="img-fluid2" src="assets/img/footer/instagram.png" alt=""></a>
+                <a href=""><img class="img-fluid2" src="assets/img/footer/linkedin.png" alt=""></a>
+                <a href=""><img class="img-fluid2" src="assets/img/footer/twitter.png" alt=""></a>
+              </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+              <h3 class="footer-titel">Download The App</h3>
+              <ul class="footer-link">
+                <li>
+                  <a href="" class="btn btn-common mt-3">GOOGLE PLAY STORE</a>
+                </li>
+                
+                </ul>
+            </div>
+             
+          </div>
+        </div>  
+      </div> 
+      
+    </footer> 
+    <!-- Footer Section End -->
+
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+    	<i class="lni-arrow-up"></i>
+    </a>
+    
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    
+
+   </script>   
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/js/jquery-min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/jquery.nav.js"></script>
+    <script src="assets/js/scrolling-nav.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>  
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/form-validator.min.js"></script>
+    <script src="assets/js/contact-form-script.min.js"></script>
+      
+    <script type="text/javascript">
+      $('#workwithusForm').submit(function(){
+          $.ajax({
+        url: "",
+        type: 'POST',
+        data : $('#workwithusForm').serialize(),
+        success: function(data){
+          console.log('form submitted');
+          alert("Form submitted successfuly!");
+          window.location.reload()
+         
+        }
+      });
+      return false;
+    });
+     </script>
+
+   <script>
+    function countChar(val) {
+     var len = val.value.length;
+     if (len >= 400) {
+     val.value = val.value.substring(0, 400);
+     } else {
+      var no= 400 - len;
+      $('#charNum').html( no+ " characters left ");
+    }
+    }
+   </script>
+
+<script>
+  function showDropdown() {
+    document.getElementById("login_dropdown").classList.toggle("show");
+  }
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.login_img')) {
+    
+      var dropdowns = document.getElementsByClassName("dropdown-menu");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+  </body>
+</html>

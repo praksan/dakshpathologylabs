@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Daksh Pathology Laboratory</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- Icon -->
+  <link rel="stylesheet" href="assets/fonts/line-icons.css">
+  <!-- Owl carousel -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/owl.theme.css">
+
+  <!-- Animate -->
+  <link rel="stylesheet" href="assets/css/animate.css">
+   <!-- Main Style -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Responsive Style -->
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" />
+
+
+  <style>
+              
+    .tab button {
+      background-color: inherit;
+      text-align: left;
+      border: none;
+      width: 22%;
+      height: 51px;
+      outline: none;
+      cursor: pointer;
+      margin-right: 20px;
+      padding-left: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-left: 0%;
+      transition: 0.3s;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 17px;
+    }
+
+    .tab .tablinks .checkbox {
+      border-radius: 30px;
+      text-align: left;
+    }
+    input[type=checkbox]:after {
+    content: "";
+    margin-top: -6px;
+    width: 27px;
+    height: 27px;
+    border: 2px solid #32429A;
+    display: block;
+    opacity: 1;
+    border-radius: 50%;
+}
+
+    .tabcontent {
+      display: none;
+      width: 100%;
+      padding: 6px 12px;
+      /* border: 1px solid #ccc; */
+      border: none;
+    }
+ </style>
+ <script>
+    window.onload = function () {
+         loadJobs();
+         loadJobMaster();
+     }
+     var baseurl = "";
+
+     function loadJobMaster() {
+      var xmlhttp = new XMLHttpRequest();
+         xmlhttp.open("GET", baseurl + "/jobmasters", true);
+         xmlhttp.onreadystatechange = function () {
+             if (xmlhttp.status === 200) {
+              var master_jobs = JSON.parse(xmlhttp.responseText);
+              
+              let dropdown1 = document.getElementById('job_title');
+              let dropdown11 = document.getElementById('job_title11');
+              dropdown1.length = 0;
+              let defaultOption = document.createElement('option');
+              defaultOption.text = 'Select Job Title';
+              dropdown1.add(defaultOption);
+              dropdown1.selectedIndex = 0;
+              dropdown11.length = 0;
+              let defaultOption11 = document.createElement('option');
+              defaultOption11.text = 'Job Title';
+              dropdown11.add(defaultOption11);
+              dropdown11.selectedIndex = 0;
+              for (var i = 0; i < master_jobs.job_titles.length; i++) {
+                var option;
+                 option = document.createElement('option');
+                 option.text = master_jobs.job_titles[i].job_title;
+                 option.value = master_jobs.job_titles[i].job_title;
+                 dropdown1.add(option);
+
+                 var option11;
+                 option11 = document.createElement('option');
+                 option11.text = master_jobs.job_titles[i].job_title;
+                 option11.value = master_jobs.job_titles[i].job_title;
+                 dropdown11.add(option11);
+              } 
+              
+
+              let dropdown2 = document.getElementById('job_location');
+              dropdown2.length = 0;
+              let defaultOption2 = document.createElement('option');
+              defaultOption2.text = 'Select Location';
+              dropdown2.add(defaultOption2);
+              dropdown2.selectedIndex = 0;
+
+              let dropdown22 = document.getElementById('job_location11');
+              dropdown22.length = 0;
+              let defaultOption22 = document.createElement('option');
+              defaultOption22.text = 'Select Location';
+              dropdown22.add(defaultOption22);
+              dropdown22.selectedIndex = 0;
+
+              for (var i = 0; i < master_jobs.job_locations.length; i++) {
+                var option2;
+                 option2 = document.createElement('option');
+                 option2.text = master_jobs.job_locations[i].job_location;
+                 option2.value = master_jobs.job_locations[i].job_location;
+                 dropdown2.add(option2);
+
+                 var option22;
+                 option22 = document.createElement('option');
+                 option22.text = master_jobs.job_locations[i].job_location;
+                 option22.value = master_jobs.job_locations[i].job_location;
+                 dropdown22.add(option22);
+              } 
+                  
+              let dropdown3 = document.getElementById('job_time');
+              dropdown3.length = 0;
+              let defaultOption3 = document.createElement('option');
+              defaultOption3.text = 'Select Time';
+              dropdown3.add(defaultOption3);
+              dropdown3.selectedIndex = 0;
+
+              let dropdown33 = document.getElementById('job_time11');
+              dropdown33.length = 0;
+              let defaultOption33 = document.createElement('option');
+              defaultOption33.text = 'Select Time';
+              dropdown33.add(defaultOption33);
+              dropdown33.selectedIndex = 0;
+
+              for (var i = 0; i < master_jobs.job_shifttimings.length; i++) {
+                var option3;
+                 option3 = document.createElement('option');
+                 option3.text = master_jobs.job_shifttimings[i].job_shiftTiming;
+                 option3.value = master_jobs.job_shifttimings[i].job_shiftTiming;
+                 dropdown3.add(option3);
+
+                var option33;
+                 option33 = document.createElement('option');
+                 option33.text = master_jobs.job_shifttimings[i].job_shiftTiming;
+                 option33.value = master_jobs.job_shifttimings[i].job_shiftTiming;
+                 dropdown33.add(option33);
+              }
+          }
+             
+         };
+         xmlhttp.send();
+     }
+    
+     function loadJobs() {
+         var xmlhttp = new XMLHttpRequest();
+         xmlhttp.open("GET", baseurl + "/jobs", true);
+         xmlhttp.onreadystatechange = function () {
+             if (xmlhttp.status === 200) {
+              const container1 = document.getElementById('freelance11');
+              const container2 = document.getElementById('full_time11');
+              const container3 = document.getElementById('part_time11');
+              const container4 = document.getElementById('internship11');
+
+              const container_freelance_mob = document.getElementById('freelance_mob11');
+              const container_full_time_mob = document.getElementById('full_time_mob11');
+              const container_part_time_mob = document.getElementById('part_time_mob11');
+              const container_internship_mob = document.getElementById('internship_mob11');
+
+              var jobs = JSON.parse(xmlhttp.responseText);
+              var content = "";
+              var mob_content = "";
+              var contentlist=[];
+              var contentlist2=[];
+              var contentlist3=[];
+              var contentlist4=[];
+
+              var mob_contentlist=[];
+              var mob_contentlist2=[];
+              var mob_contentlist3=[];
+              var mob_contentlist4=[];
+
+              for (var i = 0; i < jobs.data.length; i++){
+                 content = `<div class="card1">
+                  <div class="card-body">
+                   <div class="row">
+                     <div class="col-md-2">
+                       <img class="pl-4" src="assets/img/logo11.png" alt="logo">
+                    </div>
+                 <div class="col-md-8">
+                    <h2 class="text-left mb-3 post_title">${jobs.data[i].job_title}</h2>
+                      <div class="row">
+                       <div class="col-md-3 border-right">
+                        <p class="card-text">Location: ${jobs.data[i].job_location}</p>
+                       </div>
+                      <div class="col-md-5 text-center border-right">
+                        <p class="card-text">Exeperiance: ${jobs.data[i].job_experience}</p>
+                      </div>
+                      <div class="col-md-4 text-center">
+                        <p class="card-text">Type: ${jobs.data[i].job_type}</p>
+                      </div>
+                 </div>
+                  <p class="mt-3 card-text3">${jobs.data[i].job_desc}</p>
+               </div>
+               <div class="col-md-2 text-right pr-5">
+                <h5 class="mt-1 card-text2">${jobs.data[i].job_offering}</h5>
+                <p class="mt-4 card-text">${jobs.data[i].job_shiftTiming}</p>
+                <div class="button-pos">
+                  <button class="btn button" type="button" data-job_title="${jobs.data[i].job_title}" data-toggle="modal" data-target="#staticBackdrop">Apply
+                    Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+
+        mob_content = `<div class="card1 hire-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <h5 class="text-left" style="font-weight: 500;font-family: Helvetica Neue;font-style: normal;font-size: 16px; color: #32429A;">${jobs.data[i].job_offering}</h5>
+                <p class="text-right" style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-top: -11%; margin-right: 5px;">${jobs.data[i].job_shiftTiming}</p>
+              </div>
+              <div class="col-sm-12">
+                <h2 style="font-weight: 600; font-size: 16px;font-family: Helvetica Neue;font-style: normal; color: #292929;">${jobs.data[i].job_title}</h2>
+              </div>
+              <div class="col-sm-12 p-3">
+                <div style="background: rgba(0, 0, 0, 0.04); border-radius: 12px;">
+                  <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-left: 10%; padding-top: 5%;">Location: ${jobs.data[i].job_location}</p>
+                  <img src="assets/img/Line21.png" alt="" style="margin-left: 50%; margin-top: -20%;"></img>
+                  <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-left: 55%; margin-top: -17%;">Type: ${jobs.data[i].job_type}</p>
+                  <img src="assets/img/Line22.png" alt="" style="margin-left: 3%;"></img>
+                  <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; text-align: center; padding-bottom: 4%;">Exeperiance: ${jobs.data[i].job_experience}</p>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929;">${jobs.data[i].job_desc}</p>
+              </div>
+              <div class="col-md-12 text-left pr-5">
+                <div class="mt-2">
+                  <button class="btn button" type="button" data-job_title="${jobs.data[i].job_title}" data-toggle="modal" data-target="#staticBackdrop">Apply
+                    Now</button>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>`;
+
+                 
+
+        if (jobs.data[i].job_type == "Freelance"){
+          contentlist2[i] = content;
+          mob_contentlist2[i] = mob_content;
+            }
+            if (jobs.data[i].job_type == "Full Time"){
+              contentlist[i] = content;
+              mob_contentlist[i] = mob_content;
+            }
+            if (jobs.data[i].job_type == "Internship"){
+              contentlist3[i] = content;
+              mob_contentlist3[i] = mob_content;
+            }
+            if (jobs.data[i].job_type == "Part Time"){
+              contentlist4[i] = content;
+              mob_contentlist4[i] = mob_content;
+            }
+         }
+
+         container1.innerHTML =contentlist2;
+         container2.innerHTML =contentlist;  
+         container3.innerHTML =contentlist4;
+         container4.innerHTML =contentlist3;  
+            
+         container_freelance_mob.innerHTML = mob_contentlist2;
+         container_full_time_mob.innerHTML = mob_contentlist;
+         container_part_time_mob.innerHTML = mob_contentlist4;
+         container_internship_mob.innerHTML = mob_contentlist3;
+
+          }
+             
+         };
+         xmlhttp.send();
+     }
+    
+ </script>
+
+ <script>
+   function resetJobs() {
+         var xmlhttp = new XMLHttpRequest();
+         xmlhttp.open("GET", baseurl + "/jobs", true);
+         xmlhttp.onreadystatechange = function () {
+             if (xmlhttp.status === 200) {
+              const container1 = document.getElementById('freelance11');
+              const container2 = document.getElementById('full_time11');
+              const container3 = document.getElementById('part_time11');
+              const container4 = document.getElementById('internship11');
+
+              const container_freelance_mob = document.getElementById('freelance_mob11');
+              const container_full_time_mob = document.getElementById('full_time_mob11');
+              const container_part_time_mob = document.getElementById('part_time_mob11');
+              const container_internship_mob = document.getElementById('internship_mob11');
+
+              var jobs = JSON.parse(xmlhttp.responseText);
+              var content = "";
+              var mob_content = "";
+              var contentlist=[];
+              var contentlist2=[];
+              var contentlist3=[];
+              var contentlist4=[];
+
+              var mob_contentlist=[];
+              var mob_contentlist2=[];
+              var mob_contentlist3=[];
+              var mob_contentlist4=[];
+
+              for (var i = 0; i < jobs.data.length; i++){
+                 content = `<div class="card1">
+                  <div class="card-body">
+                   <div class="row">
+                     <div class="col-md-2">
+                       <img class="pl-4" src="assets/img/logo11.png" alt="logo">
+                    </div>
+                 <div class="col-md-8">
+                    <h2 class="text-left mb-3 post_title">${jobs.data[i].job_title}</h2>
+                      <div class="row">
+                       <div class="col-md-3 border-right">
+                        <p class="card-text">Location: ${jobs.data[i].job_location}</p>
+                       </div>
+                      <div class="col-md-5 text-center border-right">
+                        <p class="card-text">Exeperiance: ${jobs.data[i].job_experience}</p>
+                      </div>
+                      <div class="col-md-4 text-center">
+                        <p class="card-text">Type: ${jobs.data[i].job_type}</p>
+                      </div>
+                 </div>
+                  <p class="mt-3 card-text3">${jobs.data[i].job_desc}</p>
+               </div>
+               <div class="col-md-2 text-right pr-5">
+                <h5 class="mt-1 card-text2">${jobs.data[i].job_offering}</h5>
+                <p class="mt-4 card-text">${jobs.data[i].job_shiftTiming}</p>
+                <div class="button-pos">
+                  <button class="btn button" type="button" data-job_title="${jobs.data[i].job_title}" data-toggle="modal" data-target="#staticBackdrop">Apply
+                    Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+
+        mob_content = `<div class="card1 hire-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <h5 class="text-left" style="font-weight: 500;font-family: Helvetica Neue;font-style: normal;font-size: 16px; color: #32429A;">${jobs.data[i].job_offering}</h5>
+                <p class="text-right" style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-top: -11%; margin-right: 5px;">${jobs.data[i].job_shiftTiming}</p>
+              </div>
+              <div class="col-sm-12">
+                <h2 style="font-weight: 600; font-size: 16px;font-family: Helvetica Neue;font-style: normal; color: #292929;">${jobs.data[i].job_title}</h2>
+              </div>
+              <div class="col-sm-12 p-3">
+                <div style="background: rgba(0, 0, 0, 0.04); border-radius: 12px;">
+                  <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-left: 10%; padding-top: 5%;">Location: ${jobs.data[i].job_location}</p>
+                  <img src="assets/img/Line21.png" alt="" style="margin-left: 50%; margin-top: -20%;"></img>
+                  <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-left: 55%; margin-top: -17%;">Type: ${jobs.data[i].job_type}</p>
+                  <img src="assets/img/Line22.png" alt="" style="margin-left: 3%;"></img>
+                  <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; text-align: center; padding-bottom: 4%;">Exeperiance: ${jobs.data[i].job_experience}</p>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929;">${jobs.data[i].job_desc}</p>
+              </div>
+              <div class="col-md-12 text-left pr-5">
+                <div class="mt-2">
+                  <button class="btn button" type="button" data-job_title="${jobs.data[i].job_title}" data-toggle="modal" data-target="#staticBackdrop">Apply
+                    Now</button>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>`;
+
+                 
+
+        if (jobs.data[i].job_type == "Freelance"){
+          contentlist2[i] = content;
+          mob_contentlist2[i] = mob_content;
+            }
+            if (jobs.data[i].job_type == "Full Time"){
+              contentlist[i] = content;
+              mob_contentlist[i] = mob_content;
+            }
+            if (jobs.data[i].job_type == "Internship"){
+              contentlist3[i] = content;
+              mob_contentlist3[i] = mob_content;
+            }
+            if (jobs.data[i].job_type == "Part Time"){
+              contentlist4[i] = content;
+              mob_contentlist4[i] = mob_content;
+            }
+         }
+
+         container1.innerHTML =contentlist2;
+         container2.innerHTML =contentlist;  
+         container3.innerHTML =contentlist4;
+         container4.innerHTML =contentlist3;  
+            
+         container_freelance_mob.innerHTML = mob_contentlist2;
+         container_full_time_mob.innerHTML = mob_contentlist;
+         container_part_time_mob.innerHTML = mob_contentlist4;
+         container_internship_mob.innerHTML = mob_contentlist3;
+
+          }
+             
+         };
+         xmlhttp.send();
+     }
+ </script>
+</head>
+
+<body>
+
+  <!-- Header Area wrapper Starts -->
+  <header id="header-wrap">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar22 navbar-expand-md fixed-top scrolling-navbar">
+      <div class="container nav-mobile-container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <a href="index.html" class="navbar-brand"><img src="assets/img/pathlogo.png" alt=""></a>
+        <div class="labname">     
+          <h5>Daksh Pathology Laboratory</h5>
+    </div>     
+       
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto w-100 justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about_us.html">
+                About Us
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="Why Us.html">
+                Why Us
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="dropdown" style="padding-left: 20px;">
+          <div class="login_image2">
+          <a href="#" data-toggle="dropdown"><img height="65px" width="65px" src="assets/img/menu2.png"></a>
+          </div>
+          <div class="dropdown-menu menu_dropdown">
+            <a href="index.html" class="dropdown-item "><img class="menu_icon" src="assets/img/menu/Vectorhome.png" alt="">Home</a>
+            <a href="about_us.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorabout.png" alt="">About Us</a>
+            <a href="Why Us.html" class="dropdown-item active"><img class="menu_icon" src="assets/img/menu/Vectorcareers.png" alt="">Why US</a>
+           
+            <a href="gallery.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorgall.png" alt="">Gallery</a>
+            <a href="our_teams.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorour_team.png" alt="">Our Team</a>
+            <a href="contact_us.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorcontact_us.png" alt="">Contact Us</a>
+          </div>
+         </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hero Area Start -->
+    <div id="hero-area3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="contents">
+                <h2 class="head-title">Know more About Us</h2> 
+              <!-- <h2 class="head-title">Job Openings</h2> -->
+
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- Hero Area End -->
+
+  </header>
+  <!-- Header Area wrapper End -->
+
+  <!-- Services Section Start -->
+  <section id="services" class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <div class="row careers_home">
+          <div class="row" style="padding-left: 7%;">
+           
+            
+            <h2 style="text-align: center; padding-left: 8%; padding-right: 8%; color: #32429A; font-size: 50px;"
+              class="section-title6">Passion driven Perspectives</h2>
+            
+          </div>
+        </div>
+        <div class="row careers_home2">
+          <div class="row">
+            <img style="height: 30px; padding-left: 10%;" class="img-fluid" src="assets/img/careers/c1.png" alt="">
+            <img class="img-fluid" src="assets/img/careers/c1.png" style="height: 30px; padding-left: 10px;" alt="">
+            <h2 class="section-title6 text-center" style="font-size: 23px; padding-left: 12%; margin-top: -25px;">Passion driven <br> Perspectives</h2>
+            <img class="img-fluid" src="assets/img/careers/c2.png" style="height: 30px; padding-right: 10px;" alt="">
+            <img class="img-fluid" src="assets/img/careers/c2.png" style="height: 30px; padding-right: 5%;" alt="">
+          </div>
+        </div>
+
+        <h2 style="padding-left: 6%; padding-right: 6%; padding-top: 6%; text-align: center;" class="section-subtitle"
+          data-wow-delay="0.3s">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt dolorum dolore, et voluptates sit corrupti sed unde enim aspernatur, commodi, quisquam repellendus est ipsam molestiae dolor earum dicta ex ratione!
+          for our employees.
+        </h2>
+
+      </div>
+
+    </div>
+   
+
+    <div class="row" style="padding-top: 5%; padding: 5%">
+      <div class="col-md-5">
+        <div class="div_whyus">
+          <div class="parent wow fadeInDown" style="left: 0%;" data-wow-delay="0.3s">
+            <div>
+              <img class="image5" width="420px" height="550px" src="assets/img/whyus.png" alt="">
+            </div>
+            
+            <div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="div_whyus2">
+          <div class="parent wow fadeInDown" style="left: 0%;" data-wow-delay="0.3s">
+            <div>
+              <img class="image5" src="assets/img/careers/whyus2.png" alt="">
+            </div>
+            <div>
+              <img class="image11" src="assets/img/about/mm2.png" alt="">
+            </div>
+            <div>
+              <img class="image10" src="assets/img/about/mm1.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-7 wow fadeInDown" data-wow-delay="0.3s">
+        <h2 class="section-title33">Why Us?</h2>
+        <h2 class="section-subtitle333">We foster an environment of growth and success by defining our culture by our values.</h2>
+
+        <table>
+          <tr>
+            <td>
+              <img class="num-img1" src="assets/img/011.png" alt="" />
+            </td>
+            <td>
+              <h2 style="text-align: left;" class="section-subtitle">Working with inspirational and visionary leaders and great talent is a privilege. Providing you with an environment that empowers and enables you to do your best.</h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img class="num-img2" src="assets/img/022.png" alt="" />
+            </td>
+            <td>
+              <h2 style="text-align: left;" class="section-subtitle"> We provide relocation assistance for those who comes to work from other places.</h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img class="num-img3" src="assets/img/033.png" alt="" />
+            </td>
+            <td>
+              <h2 style="text-align: left;" class="section-subtitle">The cultural diversity of our workforce is one of our greatest strengths, and their diverse skill sets and experiences are invaluable.</h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img class="num-img4" src="assets/img/044.png" alt="" />
+            </td>
+            <td>
+              <h2 style="text-align: left;" class="section-subtitle"> We have various skill development programs running to explore individuals talents.</h2>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row" style="padding-left: 8%;padding-right: 8%;">
+      <div class="row col-md-12">
+        <h5 class="section1111" style="padding-top: 20px;">We are Hiring!</h5>
+        
+    
+     
+
+ >
+      <!-- Apply Now Pup-Up -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div class="contact-block">
+                      <form id="workwithusForm">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h5 class="text-center"
+                              style="font-size: 43px; color: #32429A; font-family: Helvetica Neue; font-style: normal; font-weight: normal;">
+                              Apply Now</h5>
+                            <img class="close close11" data-dismiss="modal" aria-label="Close"
+                              src="assets/img/close.png" alt="">
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group11">
+                              <input type="text" placeholder="Full Name*" id="name" class="form-control" required
+                                data-error="Please enter your full name">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group11">
+                              <input type="number" placeholder="Mobile Number*" id="mobile" class="form-control"
+                                required data-error="Please enter your mobile number">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group11">
+                              <input type="email" placeholder="Email Address*" id="email" class="form-control" required
+                                data-error="Please enter your email">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group11">
+                              <input type="text" placeholder="Full Address*" id="address" class="form-control" required
+                                data-error="Please enter your address">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group11">
+                                <select class="select2" name="state" id="state">
+                                 
+                                  <option value="Maharashtra">Maharashtra</option>
+                                  
+                                </select>
+                              </div>
+                              <div class="help-block with-errors"></div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group11">
+                              <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Pincode*"
+                                required data-error="Please enter your pincode">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group11">
+                              <input type="text" class="form-control" id="job_title" style="background-color: white;" name="job_title" disabled placeholder="Job title*"
+                                required data-error="Please enter job title">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                          
+                          <div class="col-md-12">
+                            <div class="form-group11">
+                              <input type="text" onkeyup="countChar(this)" maxlength='400' class="form-control"
+                                id="cover_letter" name="cover_letter" placeholder="Write Cover Letter*" required
+                                data-error="Please write cover letter">
+                              <div style="padding-left: 10px;" id="charNum"></div>
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="form-group11">
+                              <input type="file" class="form-control" id="resume" name="resume"
+                                placeholder="Upload Resume*" required data-error="Please upload your Resume">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="submit_button">
+                              <button class="btn btn-common" id="form-submit" type="submit">Apply</button>
+                              <div id="msgSubmit" class="h3 text-center hidden"></div>
+                              <div class="clearfix"></div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    
+
+  </section>
+
+  <div class="about-area" style="margin: 8%; padding: 20px; border-radius: 16px;box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.13); background-color: #fff;"> 
+    <div class="container">
+      <div class="row" style="padding: 5%;">
+        <div class="col-lg-4 col-md-12 col-xs-12 wow fadeInRight" data-wow-delay="0.3s">
+          <img class="img-fluid" src="assets/img/Groupcon.png" alt="" >
+        </div>
+        <div class="col-lg-8 about_heading">
+                <div class="row">
+                  <h2 class="section-title2" style="padding-right: 0%;">Daksh Pathology Laboratory</h2>
+                  <h2 class="section-subtitle3" style="padding-left: 0%; padding-top: 10px; padding-right: 10%;">Veronica Building,94/95, Paud Road, Bhusari Colony, Kothrud, Pune, Maharashtra 411038.</h2>
+                  
+                  <div class="col-md-10">
+                    <div class="about-call-mail" style="height: 51px; border: 1px solid rgba(0, 0, 0, 0.14); box-sizing: border-box;
+                      border-radius: 30px; line-height: 45px;">
+                      <a style="color: #000;" href = "mailto: Daksh21@gmail.com"><img class="call-mail" src="assets/img/mail2.png" alt=""> Daksh21@gmail.com</a>
+                    </div>
+                  </div>
+                  <div class="col-md-10 text-center">
+                    <div class="about-call-mail" style="height: 51px; border: 1px solid rgba(0, 0, 0, 0.14); box-sizing: border-box;
+                      border-radius: 30px; line-height: 45px;">
+                      <a style="color: #000;" href = "tel:+9100000000"><img class="call-mail" src="assets/img/Vectorcall.png" alt=""> +91 0000 000 000</a>
+                    </div>
+                  </div>
+                </div>
+        </div>
+       </div>
+       
+       </div>
+    </div>
+  </div> 
+
+
+
+
+  <!-- Footer Section Start -->
+  <footer id="footer" class="footer-area section-padding">
+    <div class="container">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <h3 class="footer-titel">About</h3>
+            <ul class="footer-link2">
+              <li><a href="about_us.html">About Us</a></li>
+              
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <h3 class="footer-titel">Policies</h3>
+            <ul class="footer-link2">
+              <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Terms & Condition</a></li>
+                <li><a href="">Refund & Return Policy</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 social_accounts">
+            <h3 class="footer-titel">Social Media</h3>
+            <ul class="footer-link2">
+              <li><a href=""><i class="fa-brands fa-facebook-square mr-2"></i> Facebook</a></li>
+              <li><a href=""><i class="fa-brands fa-instagram mr-2"></i> Instagram</a></li>
+              <li><a href=""><i class="fa-brands fa-linkedin mr-2"></i> LinkedIn</a></li>
+              <li><a href=""><i class="fa-brands fa-twitter-square mr-2"></i> Twitter</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 social_accounts2">
+            <h3 class="footer-titel">Social Media</h3>
+            <div class="row">
+              <a href=""><img class="img-fluid2" src="assets/img/footer/fb.png" alt=""></a>
+              <a href=""><img class="img-fluid2" src="assets/img/footer/instagram.png" alt=""></a>
+              <a href=""><img class="img-fluid2" src="assets/img/footer/linkedin.png" alt=""></a>
+              <a href=""><img class="img-fluid2" src="assets/img/footer/twitter.png" alt=""></a>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <h3 class="footer-titel">Download The App</h3>
+            <ul class="footer-link">
+              <li>
+                <a href="" class="btn btn-common mt-3">GOOGLE PLAY STORE</a>
+              </li>
+              <!-- <li>
+                <a href="#" class="btn btn-common mt-3">APPLE APP STORE</a>
+              </li> -->
+            </ul>
+          </div>
+          <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
+              <div class="widget">
+                <h3 class="footer-logo"><img src="assets/img/logo.png" alt=""></h3>
+                <div class="textwidget">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tincidunt est, et euismod purus suscipit quis.</p>
+                </div>
+                <div class="social-icon">
+                  <a class="facebook" href="#"><i class="lni-facebook-filled"></i></a>
+                  <a class="twitter" href="#"><i class="lni-twitter-filled"></i></a>
+                  <a class="instagram" href="#"><i class="lni-instagram-filled"></i></a>
+                  <a class="linkedin" href="#"><i class="lni-linkedin-filled"></i></a>
+                </div>
+              </div>
+            </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- <div id="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyright-content">
+                <p>Copyright © 2020 <a rel="nofollow" href="https://uideck.com">UIdeck</a> All Right Reserved</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>    -->
+  </footer>
+  <!-- Footer Section End -->
+
+
+  <!-- Go to Top Link -->
+  <a href="#" class="back-to-top">
+    <i class="lni-arrow-up"></i>
+  </a>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader" id="loader-1"></div>
+  </div>
+  <!-- End Preloader -->
+
+
+  </script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="assets/js/jquery-min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/wow.js"></script>
+  <script src="assets/js/jquery.nav.js"></script>
+  <script src="assets/js/scrolling-nav.js"></script>
+  <script src="assets/js/jquery.easing.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/form-validator.min.js"></script>
+  <script src="assets/js/contact-form-script.min.js"></script>
+  <script type="text/javascript">
+    $('#workwithusForm').submit(function(){
+        $.ajax({
+      url: "",
+      type: 'POST',
+      data : $('#workwithusForm').serialize(),
+      success: function(data){
+        console.log('form submitted');
+        alert("Form submitted successfuly!");
+        window.location.reload();
+       
+      }
+    });
+    return false;
+  });
+   </script>
+  <script>
+    $(document).on("click", ".button", function () {
+     var job_title = $(this).data('job_title');
+     $(".modal-body #job_title").val( job_title );
+    });
+  </script>
+  <!-- for apply pop-up -->
+  <script>
+    function countChar(val){
+      var len = val.value.length;
+      if (len >= 400){
+      val.value = val.value.substring(0, 400);
+      } 
+      else{
+        var no= 400 - len;
+        $('#charNum').html( no+ " characters left ");
+      }
+    }
+  </script>
+   
+   <script type="text/javascript">
+			function load_jobs_type() {
+  		var job_type11 = document.getElementById('job_type11').value;
+      
+      if (job_type11 == "freelance") {
+        document.getElementById('freelance_mob11').style.display = "block";
+        document.getElementById('full_time_mob11').style.display = "none";
+        document.getElementById('part_time_mob11').style.display = "none";
+        document.getElementById('internship_mob11').style.display = "none";
+
+       }
+       if (job_type11 == "full_time") {
+        document.getElementById('full_time_mob11').style.display = "block";
+        document.getElementById('freelance_mob11').style.display = "none";
+        document.getElementById('part_time_mob11').style.display = "none";
+        document.getElementById('internship_mob11').style.display = "none";
+
+      }
+      if (job_type11 == "part_time") {
+        document.getElementById('part_time_mob11').style.display = "block";
+        document.getElementById('freelance_mob11').style.display = "none";
+        document.getElementById('full_time_mob11').style.display = "none";
+        document.getElementById('internship_mob11').style.display = "none";
+
+       }
+       if (job_type11 == "internship") {
+        document.getElementById('internship_mob11').style.display = "block";
+        document.getElementById('freelance_mob11').style.display = "none";
+        document.getElementById('part_time_mob11').style.display = "none";
+        document.getElementById('full_time_mob11').style.display = "none";
+
+       }
+    }
+
+    load_jobs_type();
+    </script> 
+    <script type="text/javascript">
+			function load_jobs_title() {
+  		var title = document.getElementById('job_title').value;
+      var baseurl = "";
+      var xmlhttp = new XMLHttpRequest();
+      var data = new FormData();
+      data.append('job_title', title);
+ 
+      const container1 = document.getElementById('job_title_filter1');
+      var content2 = "";
+      var contentlist2=[];
+
+      xmlhttp.open("POST", baseurl + "/jobfilters", true);
+      xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.status === 200) {
+          var jobs = JSON.parse(xmlhttp.responseText);
+          
+        document.getElementById('job_title_filter').style.display = "block";
+        document.getElementById('freelance').style.display = "none";
+        document.getElementById('full_time').style.display = "none";
+        document.getElementById('part_time').style.display = "none";
+        document.getElementById('internship').style.display = "none";
+
+
+        for (var i = 0; i < jobs.length; i++){
+          if(title == jobs[i].job_title){
+                 content2 = `<div class="card1 mt-3">
+                  <div class="card-body">
+                   <div class="row">
+                     <div class="col-md-2">
+                       <img class="pl-4" src="assets/img/logo11.png" alt="logo">
+                    </div>
+                 <div class="col-md-8">
+                    <h2 class="text-left mb-3 post_title">${jobs[i].job_title}</h2>
+                      <div class="row">
+                       <div class="col-md-3 border-right">
+                        <p class="card-text">Location: ${jobs[i].job_location}</p>
+                       </div>
+                      <div class="col-md-5 text-center border-right">
+                        <p class="card-text">Exeperiance: ${jobs[i].job_experience}</p>
+                      </div>
+                      <div class="col-md-4 text-center">
+                        <p class="card-text">Type: ${jobs[i].job_type}</p>
+                      </div>
+                 </div>
+                  <p class="mt-3 card-text3">${jobs[i].job_desc}</p>
+               </div>
+               <div class="col-md-2 text-right pr-5">
+                <h5 class="mt-1 card-text2">${jobs[i].job_offering}</h5>
+                <p class="mt-4 card-text">${jobs[i].job_shiftTiming}</p>
+                <div class="button-pos">
+                  <button class="btn button" type="button" data-job_title="${jobs[i].job_title}" data-toggle="modal" data-target="#staticBackdrop">Apply
+                    Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+            
+                  contentlist2[i] = content2;
+            }
+         }
+
+        container1.innerHTML =contentlist2;
+      }
+
+    };
+    xmlhttp.send(data);
+  }
+   </script> 
+   <script type="text/javascript">
+    function load_jobs_title_mob() {
+    var mob_title = document.getElementById('job_title11').value;
+    
+    var baseurl = "";
+    var xmlhttp = new XMLHttpRequest();
+    var data = new FormData();
+    data.append('job_title', mob_title);
+    const container11 = document.getElementById('job_title_filter11');
+    var content11 = "";
+    var contentlist11=[];
+    
+    xmlhttp.open("POST", baseurl + "/jobfilters", true);
+    xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.status === 200) {
+        var jobs = JSON.parse(xmlhttp.responseText);
+        
+      document.getElementById('job_title_filter11').style.display = "block";
+      document.getElementById('freelance_mob11').style.display = "none";
+      document.getElementById('full_time_mob11').style.display = "none";
+      document.getElementById('part_time_mob11').style.display = "none";
+      document.getElementById('internship_mob11').style.display = "none";
+
+     
+      for (var i = 0; i < jobs.length; i++){
+        if(mob_title == jobs[i].job_title){
+        content11 = `<div class="card1 hire-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <h5 class="text-left" style="font-weight: 500;font-family: Helvetica Neue;font-style: normal;font-size: 16px; color: #32429A;">${jobs[i].job_offering}</h5>
+                <p class="text-right" style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-top: -11%; margin-right: 5px;">${jobs[i].job_shiftTiming}</p>
+              </div>
+              <div class="col-sm-12">
+                <h2 style="font-weight: 600; font-size: 16px;font-family: Helvetica Neue;font-style: normal; color: #292929;">${jobs[i].job_title}</h2>
+              </div>
+              <div class="col-sm-12 p-3">
+                <div style="background: rgba(0, 0, 0, 0.04); border-radius: 12px;">
+                  <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-left: 10%; padding-top: 5%;">Location: ${jobs[i].job_location}</p>
+                  <img src="assets/img/Line21.png" alt="" style="margin-left: 50%; margin-top: -20%;"></img>
+                  <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-left: 55%; margin-top: -17%;">Type: ${jobs[i].job_type}</p>
+                  <img src="assets/img/Line22.png" alt="" style="margin-left: 3%;"></img>
+                  <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; text-align: center; padding-bottom: 4%;">Exeperiance: ${jobs[i].job_experience}</p>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929;">${jobs[i].job_desc}</p>
+              </div>
+              <div class="col-md-12 text-left pr-5">
+                <div class="mt-2">
+                  <button class="btn button" type="button" data-job_title="${jobs[i].job_title}" data-toggle="modal" data-target="#staticBackdrop">Apply
+                    Now</button>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>`;
+
+            contentlist11[i] = content11;
+           }
+        }
+
+      container11.innerHTML =contentlist11;
+      
+
+    }
+  };
+  xmlhttp.send(data);
+}
+   </script>
+  <script type="text/javascript">
+  function load_jobs_location() {
+  var job_location = document.getElementById('job_location').value;
+  var baseurl = "";
+  var xmlhttp = new XMLHttpRequest();
+  var data = new FormData();
+  data.append('job_location', job_location);
+
+  const container2 = document.getElementById('job_location_filter1');
+  var content2 = "";
+  var contentlist2=[];
+
+  xmlhttp.open("POST", baseurl + "/jobfilters", true);
+  xmlhttp.onreadystatechange = function () {
+  if (xmlhttp.status === 200) {
+      var jobs = JSON.parse(xmlhttp.responseText);
+      
+    document.getElementById('job_location_filter').style.display = "block";
+    document.getElementById('job_title_filter').style.display = "none";
+    document.getElementById('freelance').style.display = "none";
+    document.getElementById('full_time').style.display = "none";
+    document.getElementById('part_time').style.display = "none";
+    document.getElementById('internship').style.display = "none";
+
+
+    for (var i = 0; i < jobs.length; i++){
+      if(job_location == jobs[i].job_location){
+             content2 = `<div class="card1 mt-3">
+              <div class="card-body">
+               <div class="row">
+                 <div class="col-md-2">
+                   <img class="pl-4" src="assets/img/logo11.png" alt="logo">
+                </div>
+             <div class="col-md-8">
+                <h2 class="text-left mb-3 post_title">${jobs[i].job_title}</h2>
+                  <div class="row">
+                   <div class="col-md-3 border-right">
+                    <p class="card-text">Location: ${jobs[i].job_location}</p>
+                   </div>
+                  <div class="col-md-5 text-center border-right">
+                    <p class="card-text">Exeperiance: ${jobs[i].job_experience}</p>
+                  </div>
+                  <div class="col-md-4 text-center">
+                    <p class="card-text">Type: ${jobs[i].job_type}</p>
+                  </div>
+             </div>
+              <p class="mt-3 card-text3">${jobs[i].job_desc}</p>
+           </div>
+           <div class="col-md-2 text-right pr-5">
+            <h5 class="mt-1 card-text2">${jobs[i].job_offering}</h5>
+            <p class="mt-4 card-text">${jobs[i].job_shiftTiming}</p>
+            <div class="button-pos">
+              <button class="btn button" type="button" data-job_title="${jobs[i].job_title}" data-toggle="modal" data-target="#staticBackdrop">Apply
+                Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+        
+              contentlist2[i] = content2;
+        }
+     }
+
+    container2.innerHTML =contentlist2;
+  }
+
+};
+xmlhttp.send(data);
+}
+</script> 
+<script type="text/javascript">
+  function load_jobs_time() {
+  var job_time = document.getElementById('job_time').value;
+  var baseurl = "";
+  var xmlhttp = new XMLHttpRequest();
+  var data = new FormData();
+  data.append('job_shiftTiming', job_time);
+
+  const container2 = document.getElementById('job_time_filter1');
+  var content2 = "";
+  var contentlist2=[];
+
+  xmlhttp.open("POST", baseurl + "/jobfilters", true);
+  xmlhttp.onreadystatechange = function () {
+  if (xmlhttp.status === 200) {
+      var jobs = JSON.parse(xmlhttp.responseText);
+      document.getElementById('job_time_filter').style.display = "block";
+    document.getElementById('job_location_filter').style.display = "none";
+    document.getElementById('job_title_filter').style.display = "none";
+    document.getElementById('freelance').style.display = "none";
+    document.getElementById('full_time').style.display = "none";
+    document.getElementById('part_time').style.display = "none";
+    document.getElementById('internship').style.display = "none";
+
+
+    for (var i = 0; i < jobs.length; i++){
+      if(job_time == jobs[i].job_shiftTiming){
+             content2 = `<div class="card1 mt-3">
+              <div class="card-body">
+               <div class="row">
+                 <div class="col-md-2">
+                   <img class="pl-4" src="assets/img/logo11.png" alt="logo">
+                </div>
+             <div class="col-md-8">
+                <h2 class="text-left mb-3 post_title">${jobs[i].job_title}</h2>
+                  <div class="row">
+                   <div class="col-md-3 border-right">
+                    <p class="card-text">Location: ${jobs[i].job_location}</p>
+                   </div>
+                  <div class="col-md-5 text-center border-right">
+                    <p class="card-text">Exeperiance: ${jobs[i].job_experience}</p>
+                  </div>
+                  <div class="col-md-4 text-center">
+                    <p class="card-text">Type: ${jobs[i].job_type}</p>
+                  </div>
+             </div>
+              <p class="mt-3 card-text3">${jobs[i].job_desc}</p>
+           </div>
+           <div class="col-md-2 text-right pr-5">
+            <h5 class="mt-1 card-text2">${jobs[i].job_offering}</h5>
+            <p class="mt-4 card-text">${jobs[i].job_shiftTiming}</p>
+            <div class="button-pos">
+              <button class="btn button" type="button" data-job_title="${jobs[i].job_title}" data-toggle="modal" data-target="#staticBackdrop">Apply
+                Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+        
+              contentlist2[i] = content2;
+        }
+     }
+
+    container2.innerHTML =contentlist2;
+  }
+
+};
+xmlhttp.send(data);
+}
+</script> 
+<script type="text/javascript">
+  function load_jobs_location_mob() {
+  var mob_location = document.getElementById('job_location11').value;
+  
+  var baseurl = "";
+  var xmlhttp = new XMLHttpRequest();
+  var data = new FormData();
+  data.append('job_location', mob_location);
+  const container11 = document.getElementById('job_location_filter11');
+  var content11 = "";
+  var contentlist11=[];
+  
+  xmlhttp.open("POST", baseurl + "/jobfilters", true);
+  xmlhttp.onreadystatechange = function () {
+  if (xmlhttp.status === 200) {
+      var jobs = JSON.parse(xmlhttp.responseText);
+      
+      document.getElementById('job_location_filter11').style.display = "block";
+    document.getElementById('job_title_filter11').style.display = "none";
+    document.getElementById('freelance_mob11').style.display = "none";
+    document.getElementById('full_time_mob11').style.display = "none";
+    document.getElementById('part_time_mob11').style.display = "none";
+    document.getElementById('internship_mob11').style.display = "none";
+
+   
+    for (var i = 0; i < jobs.length; i++){
+      if(mob_location == jobs[i].job_location){
+      content11 = `<div class="card1 hire-card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 class="text-left" style="font-weight: 500;font-family: Helvetica Neue;font-style: normal;font-size: 16px; color: #32429A;">${jobs[i].job_offering}</h5>
+              <p class="text-right" style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-top: -11%; margin-right: 5px;">${jobs[i].job_shiftTiming}</p>
+            </div>
+            <div class="col-sm-12">
+              <h2 style="font-weight: 600; font-size: 16px;font-family: Helvetica Neue;font-style: normal; color: #292929;">${jobs[i].job_title}</h2>
+            </div>
+            <div class="col-sm-12 p-3">
+              <div style="background: rgba(0, 0, 0, 0.04); border-radius: 12px;">
+                <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-left: 10%; padding-top: 5%;">Location: ${jobs[i].job_location}</p>
+                <img src="assets/img/Line21.png" alt="" style="margin-left: 50%; margin-top: -20%;"></img>
+                <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-left: 55%; margin-top: -17%;">Type: ${jobs[i].job_type}</p>
+                <img src="assets/img/Line22.png" alt="" style="margin-left: 3%;"></img>
+                <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; text-align: center; padding-bottom: 4%;">Exeperiance: ${jobs[i].job_experience}</p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929;">${jobs[i].job_desc}</p>
+            </div>
+            <div class="col-md-12 text-left pr-5">
+              <div class="mt-2">
+                <button class="btn button" type="button" data-job_title="${jobs[i].job_title}" data-toggle="modal" data-target="#staticBackdrop">Apply
+                  Now</button>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>`;
+
+          contentlist11[i] = content11;
+         }
+      }
+
+    container11.innerHTML =contentlist11;
+    
+
+  }
+};
+xmlhttp.send(data);
+}
+ </script>
+ <script type="text/javascript">
+  function load_jobs_time_mob() {
+  var job_time11 = document.getElementById('job_time11').value;
+  
+  var baseurl = "";
+  var xmlhttp = new XMLHttpRequest();
+  var data = new FormData();
+  data.append('job_shiftTiming', job_time11);
+  const container11 = document.getElementById('job_time_filter11');
+  var content11 = "";
+  var contentlist11=[];
+  
+  xmlhttp.open("POST", baseurl + "/jobfilters", true);
+  xmlhttp.onreadystatechange = function () {
+  if (xmlhttp.status === 200) {
+      var jobs = JSON.parse(xmlhttp.responseText);
+      
+      document.getElementById('job_time_filter11').style.display = "block";
+      document.getElementById('job_location_filter11').style.display = "none";
+    document.getElementById('job_title_filter11').style.display = "none";
+    document.getElementById('freelance_mob11').style.display = "none";
+    document.getElementById('full_time_mob11').style.display = "none";
+    document.getElementById('part_time_mob11').style.display = "none";
+    document.getElementById('internship_mob11').style.display = "none";
+
+   
+    for (var i = 0; i < jobs.length; i++){
+      if(job_time11 == jobs[i].job_shiftTiming){
+      content11 = `<div class="card1 hire-card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 class="text-left" style="font-weight: 500;font-family: Helvetica Neue;font-style: normal;font-size: 16px; color: #32429A;">${jobs[i].job_offering}</h5>
+              <p class="text-right" style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-top: -11%; margin-right: 5px;">${jobs[i].job_shiftTiming}</p>
+            </div>
+            <div class="col-sm-12">
+              <h2 style="font-weight: 600; font-size: 16px;font-family: Helvetica Neue;font-style: normal; color: #292929;">${jobs[i].job_title}</h2>
+            </div>
+            <div class="col-sm-12 p-3">
+              <div style="background: rgba(0, 0, 0, 0.04); border-radius: 12px;">
+                <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-left: 10%; padding-top: 5%;">Location: ${jobs[i].job_location}</p>
+                <img src="assets/img/Line21.png" alt="" style="margin-left: 50%; margin-top: -20%;"></img>
+                <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; margin-left: 55%; margin-top: -17%;">Type: ${jobs[i].job_type}</p>
+                <img src="assets/img/Line22.png" alt="" style="margin-left: 3%;"></img>
+                <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929; text-align: center; padding-bottom: 4%;">Exeperiance: ${jobs[i].job_experience}</p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <p style="font-size: 13px;font-family: Helvetica Neue;font-style: normal;font-weight: normal; color: #292929;">${jobs[i].job_desc}</p>
+            </div>
+            <div class="col-md-12 text-left pr-5">
+              <div class="mt-2">
+                <button class="btn button" type="button" data-job_title="${jobs[i].job_title}" data-toggle="modal" data-target="#staticBackdrop">Apply
+                  Now</button>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>`;
+
+          contentlist11[i] = content11;
+         }
+      }
+
+    container11.innerHTML =contentlist11;
+    
+
+  }
+};
+xmlhttp.send(data);
+}
+ </script>
+   <script>
+   function openmodal(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+   // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+  if (cityName == "freelance") {
+    document.getElementById("freelance1").checked = true;
+    document.getElementById("full_time1").checked = false;
+    document.getElementById("internship1").checked = false;
+    document.getElementById("part_time1").checked = false;
+
+  }
+  if (cityName == "full_time") {
+    document.getElementById("full_time1").checked = true;
+    document.getElementById("freelance1").checked = false;
+    document.getElementById("internship1").checked = false;
+    document.getElementById("part_time1").checked = false;
+
+  }
+  if (cityName == "internship") {
+    document.getElementById("internship1").checked = true;
+    document.getElementById("full_time1").checked = false;
+    document.getElementById("freelance1").checked = false;
+    document.getElementById("part_time1").checked = false;
+
+  }
+  if (cityName == "part_time") {
+    document.getElementById("part_time1").checked = true;
+    document.getElementById("freelance1").checked = false;
+    document.getElementById("internship1").checked = false;
+    document.getElementById("full_time1").checked = false;
+
+  }
+}
+
+  </script>
+
+<script>
+  function showDropdown() {
+    document.getElementById("login_dropdown").classList.toggle("show");
+  }
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.login_img')) {
+    
+      var dropdowns = document.getElementsByClassName("dropdown-menu");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+</body>
+
+</html>

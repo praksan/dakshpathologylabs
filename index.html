@@ -1,0 +1,1162 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Daksh Pathology Laboratory</title>
+   
+   <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
+    <!-- Icon -->
+    <link rel="stylesheet" href="assets/fonts/line-icons.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Animate -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" />
+    <style>
+      .active-img{
+        outline: 2px solid #16B5AB;
+        outline-offset: -0px;
+        border-radius: 15px;
+      }
+      .active-img2{
+        outline: 2px solid #16B5AB;
+        outline-offset: -19px;
+        border-radius: 30px;
+      }
+
+      #carouselExampleSlidesOnly .carousel-inner{height: 575px !important; margin: 0;}
+      #carouselExampleSlidesOnly .carousel-inner .slider-img{height: 542px; width: 100%; border-radius: 16px;}
+      .carousel-indicators li.active{background-color: #AAE0FF;}
+
+      @media only screen and (max-device-width: 480px) {
+          #carouselExampleSlidesOnly .carousel-inner{height: 320px !important; margin: 0;}
+          #carouselExampleSlidesOnly .carousel-inner .slider-img{height: 300px; width: 100%; border-radius: 16px;}
+      }
+    </style>
+
+    <script>
+      window.onload = function () {
+           loadJobs();
+       }
+       var baseurl = "";
+  
+       function loadJobs() {
+        var xmlhttp = new XMLHttpRequest();
+         xmlhttp.open("GET", baseurl + "/jobs", true);
+         xmlhttp.onreadystatechange = function () {
+             if (xmlhttp.status === 200) {
+              var jobs = JSON.parse(xmlhttp.responseText);
+              
+              let dropdown1 = document.getElementById('jobs');
+              dropdown1.length = 0;
+              let defaultOption1 = document.createElement('option');
+              defaultOption1.text = 'Current Job Openings';
+              dropdown1.add(defaultOption1);
+              dropdown1.selectedIndex = 0;
+
+              for (var i = 0; i < jobs.data.length; i++) {
+                var option;
+                 option = document.createElement('option');
+                 option.text = jobs.data[i].job_title;
+                 option.value = jobs.data[i].job_id;
+                 dropdown1.add(option);
+
+              } 
+            }
+           
+         };
+         xmlhttp.send();
+     }
+    </script>
+  </head>
+  <body>
+
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar11 navbar-expand-md fixed-top scrolling-navbar">
+        <div class="container nav-mobile-container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a href="index.html" class="navbar-brand-bg"><img src="assets/img/pathlogo.png" alt=""></a>  
+          <div class="labname">     
+                <h5>Daksh Pathology Laboratory</h5>
+          </div>     
+         
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end">
+              <li class="nav-item active">
+                <a class="nav-link" href="#hero-area">
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about_us.html">
+                  About Us
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Why Us.html">
+                  Why Us
+                </a>
+              </li>
+             
+            </ul>
+          </div>
+        
+          <div class="dropdown" style="padding-left: 20px;">
+            <div class="login_image2">
+            <a href="#" data-toggle="dropdown"><img height="65px" width="65px" src="assets/img/menu2.png"></a>
+            </div>
+            <div class="dropdown-menu menu_dropdown">
+              <a href="index.html" class="dropdown-item active"><img class="menu_icon" src="assets/img/menu/Vectorhome.png" alt="">Home</a>
+              <a href="about_us.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorabout.png" alt="">About Us</a>
+              <a href="Why Us.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorcareers.png" alt="">Why Us</a>
+              <!-- <a href="business.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorbusiness.png" alt="">Business Partnerships</a> -->
+             
+              <a href="gallery.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorgall.png" alt="">Gallery</a>
+              <a href="our_teams.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorour_team.png" alt="">Our Team</a>
+              <a href="contact_us.html" class="dropdown-item"><img class="menu_icon" src="assets/img/menu/Vectorcontact_us.png" alt="">Contact Us</a>
+            </div>
+           </div>
+        </div>
+      </nav>
+      <!-- Navbar End -->
+
+      <!-- Hero Area Start -->
+      <div id="hero-area" class="hero-area-bg">
+        <div class="container">      
+          <div class="row">
+            <div class="head_div">
+              <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                  <img class="img-fluid" src="assets/img/Group1209.png" alt="">
+              </div>
+            </div>
+            <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+              <div class="contents">
+                <h2 class="head-tops">Fastest Growing Pathology Labs in Kothurd Pune</h2>
+               
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+              <div class="intro-img">
+                <img class="img-fluid" src="assets/img/examining-sample-with-microscope.jpg" alt="">
+              </div>            
+            </div>
+          </div> 
+        </div> 
+      </div>
+      <!-- Hero Area End -->
+
+    </header>
+    <!-- Header Area wrapper End -->
+
+    <!-- Slider -->
+    <section class="mt-5">
+      <div class="container">
+        <div class="col-md-12">
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleSlidesOnly" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleSlidesOnly" data-slide-to="1"></li>
+              <li data-target="#carouselExampleSlidesOnly" data-slide-to="2"></li>
+              <li data-target="#carouselExampleSlidesOnly" data-slide-to="3"></li>
+              
+             </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="slider-img" src="assets/img/slider01.jpg" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img class="slider-img" src="assets/img/slider02.jpg" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img class="slider-img" src="assets/img/slider03.jpg" alt="...">
+              </div>
+              
+              
+              <!-- <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
+                <img style="background-color: #32429A; border-radius: 50%; padding: 10px; padding-left: 13px; padding-right: 13px;" src="assets/img/testimonial/l_arrow.png" alt="">
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
+                <img style="background-color: #32429A; border-radius: 50%; padding: 10px; padding-left: 13px; padding-right: 13px;" src="assets/img/testimonial/r_arrow.png" alt="">
+              </a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- slider ends -->
+
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="row">
+            
+          <div class="col-md-10">
+             <h2 class="section-title111 wow fadeInDown text-capitalize" data-wow-delay="0.3s">Fastest Growing Pathology Labs in Kothurd Pune</h2>
+             <h2 class="section-subtitle111" data-wow-delay="0.3s">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero corrupti, autem, expedita aperiam sunt omnis temporibus ratione error possimus numquam magni, suscipit harum ipsam iste fugit odit doloribus nihil. Cupiditate!</h2>
+          </div>
+          
+          </div>
+
+        </div>
+        <div class="row">
+          <!-- Services item -->
+          <div class="col-md-4">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.3s" style="background-color: #fff;">
+              <div class="parent" style="left: 0%;">
+                <div>
+                  <img class="image1" src="assets/img/plane2.png" alt="">
+                </div>
+                <div>
+                  <img class="image2" src="assets/img/plane33.png" alt="">
+                </div>
+              </div>
+              <div class="services-content">
+                <p>Launch Year of the Pathology</p>
+                <p style="font-size: 20px;">2005</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item -->
+          <div class="col-md-4">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.6s" style="background-color: #fff;">
+              <div class="parent" style="left: 0%;">
+                <div>
+                  <img class="image3" src="assets/img/Ellipsess1.png" alt="">
+                </div>
+                <div>
+                  <img class="image2" src="assets/img/plabtesting.png" alt="">
+                </div>
+                </div>
+              <div class="services-content">
+                <p>Number of Test</p>
+                <p style="font-size: 20px;">3000+</p>              
+              </div>
+            </div>
+          </div>
+          <!-- Services item -->
+          <div class="col-md-4">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.9s" style="background-color: #fff;">
+              <div class="parent" style="left: 0%;">
+                <div>
+                  <img class="image4" src="assets/img/Ellipsess2.png" alt="">
+                </div>
+                <div>
+                  <img class="image2" src="assets/img/clienslabs.png" alt="">
+                </div>    
+               </div>
+              <div class="services-content">
+                <p>Number of Clients</p>
+                <p style="font-size: 20px;">3,500+</p>              
+              </div>
+            </div>
+          </div>
+         </div>
+      </div>
+    </section>
+    <div style="text-align: center;">
+      <a href="about_us.html"  class="btn btn-common mt-3">Know More About Us</a>
+    </div>
+
+    <!-- Services Section End -->
+
+    <section id="services2" class="section-padding" style="padding-top: 20px;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Why choose us?</h2>
+          <h2 class="section-subtitle1">Receive Exclusive benefits to customer with leading Pathology Labs.</h2>
+          <h2 class="section-subtitle11">Receive Exclusive benefits to partner with leading supplier of generic medicines.</h2>
+        </div>
+        <div class="row">
+          <div class="choose-col">
+            <div class="service_block">
+              <div class="services-item2">
+               <div class="services-content2">
+                  <p><span style="color: #32429A;">Fastest growing </span>Pathology Lab In Kothrud  Pune</p>
+                </div>
+               </div>
+            </div>
+          </div>
+          <div class="choose-col">
+            <div class="service_block">
+              <div class="services-item2 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="services-content2">
+                  <p>Home Collections Aviable <span style="color: #32429A;"> </span></p>              
+                </div>
+               </div>
+            </div>
+          </div>
+          <div class="choose-col">
+            <div class="service_block">
+              <div class="services-item2 wow fadeInUp" data-wow-delay="0.3s">
+               <div class="services-content2">
+                  <p><span style="color: #32429A;">Certificated Staff</span> & Docters </p>              
+                </div>
+               </div>
+            </div>
+          </div>
+          <div class="choose-col">
+            <div class="service_block">
+              <div class="services-item2 wow fadeInUp" data-wow-delay="0.3s">
+               <div class="services-content2">
+                  <p><span style="color: #32429A;">Branded Machines </span></p>              
+                </div>
+               </div>
+            </div>
+           </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </section>
+
+
+       
+             
+   
+
+    <section id="services2" class="section-padding" style="padding-bottom: 6%;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">How this works?</h2>
+          <h2 class="section-subtitle" style="text-align: left;padding-left: 0%; padding-top: 0px; padding-bottom: 0%;">Get set with 4 steps process to step in as our valuable partner.</h2>
+         <div class="how_img" style="text-align: end;">
+         </div>
+      </div>
+      <div class="row" style="padding-top: 0%;">
+        
+         <div class="col-md-3">
+            <img class="image18" style="z-index: 999;" src="assets/img/process/01.png" alt="">
+            <img class="image17" style="z-index: 999;" src="assets/img/process/01.png" alt="">
+            <div class="services-item4 wow fadeInRight" data-wow-delay="0.3s" style="background-color: #fff;">
+              <div class="icon">
+                 <img class="app" src="assets/img/process/blood collection.png" alt="">
+                </div>
+              <div class="services-content">
+                <p>Blood Collections</p>
+                <h2>Fill in the all the details correctly.</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3" style="margin-top: 5%;">
+            <img class="image18" style="z-index: 999;" src="assets/img/process/02.png" alt="">
+            <img class="image17" style="z-index: 999;" src="assets/img/process/02.png" alt="">
+            <div class="services-item4 wow fadeInRight" data-wow-delay="0.6s" style="background-color: #fff;">
+              <div class="icon">
+                <img class="app" src="assets/img/process/ptesting001.png" alt="">
+              </div>
+              <div class="services-content">
+                <p>Testing</p>
+                <h2>Blood Testing 
+                 by our team.
+                 </h2>              
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img class="image18" style="z-index: 999;" src="assets/img/process/03.png" alt="">
+            <img class="image17" style="z-index: 999;" src="assets/img/process/03.png" alt="">
+            <div class="services-item4 wow fadeInRight" data-wow-delay="0.9s" style="background-color: #fff;">
+              <div class="icon">
+                <img class="app" src="assets/img/process/approval01.png" alt="">
+              </div>
+              <div class="services-content">
+                <p>Approval</p>
+                <h2>Approval By Certified Dr.
+                  .</h2>              
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3" style="margin-top: 5%;">
+            <img class="image18" style="z-index: 999;" src="assets/img/process/04.png" alt="">
+            <img class="image17" style="z-index: 999;" src="assets/img/process/04.png" alt="">
+            <div class="services-item4 wow fadeInRight" data-wow-delay="0.9s" style="background-color: #fff;">
+              <div class="icon">
+                <img class="app" src="assets/img/process/report01.png" alt="">
+              </div>
+              <div class="services-content">
+                <p>Report</p>
+                <h2>Final Report of Clients.</h2>              
+              </div>
+            </div>
+          </div>
+
+          <div class="line33">
+            <img src="assets/img/line33.png" alt="">
+            <img src="assets/img/line33.png" alt="">
+          </div>
+
+       
+         </div> 
+
+       
+      </div>
+    </section>
+
+    <div class="about-area" style="padding: 30px; background: linear-gradient(256.63deg, #32429A 0%, #16B5AB 100%);"> 
+      <div class="container">
+        <div class="row" style="padding: 2%;">
+          <div class="col-lg-4 col-md-12 col-xs-12 wow fadeInRight" data-wow-delay="0.3s">
+            <img class="work_image" src="" alt="" >
+          </div>
+
+          <div class="col-lg-8" style="text-align: left; padding-left: 10%;">
+            <div class="about-wrapper wow fadeInLeft" data-wow-delay="0.3s">
+                <div class="content">
+                  <div class="row">
+                    <h2 class="section-title5">Books Your Appointments</h2>
+                    <h2 class="section-subtitle3" style="color: white;padding-left: 0%; text-align: left;">Professional Tester is a priority for us, which is why we hire exceptional talent. We offer challenging roles with clear responsibilities, and a variety of opportunities to develop skills and learn.</h2>
+                    <!-- <h2 class="section-subtitle4"></h2> -->
+                        <select class="select4" style="margin-top: 10px;" name="jobs" id="jobs">
+                          
+                        </select>
+                          
+                        <div class="text-left pt-3">
+                          
+                            <button class="btn button" type="button" onclick="openModal()">Apply Now</button>
+                         
+                        </div>
+                        
+                </div>
+              </div>
+            </div>
+           
+          </div>
+         </div>
+      </div>
+    </div> 
+
+
+  
+  
+    <!-- Testimonial Section Start -->
+   <section id="testimonial" class="testimonial section-padding"> 
+      <div class="container">
+          <div class="section-header" style="text-align: center;">
+              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Testimonials</h2>
+              
+             
+             <h2 class="section-subtitle" data-wow-delay="0.3s">Let’s see what our clients say about us.</h2>
+          
+          </div>
+
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="parent">
+                     <img class="image16" src="assets/img/testimonial/square.png" alt="">
+                     <img class="image15" src="assets/img/testimonial/jaikant.png" alt="">
+                  </div>
+                  <div class="carousel-item-sub">
+                      <div class="testomonial_name"><b>Jaikant Jadhav, </b> Nashik</div>
+                      <div class="testomonial_sub">Easy and hassle-free service at the store. Absolutely great rates of generic medicines. I regularly purchase them for my father. It is true that anyone can easily save money by buying their generic medicines.</div>
+                  </div>
+                  <p class="carousel-item-num">1 of 2</p>
+                </div>           
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="parent">
+                    <img class="image16" src="assets/img/testimonial/square.png" alt="">
+                    <img class="image15" src="assets/img/testimonial/ganesh.png" alt="">
+                  </div>
+                  <div class="carousel-item-sub">
+                    <div class="testomonial_name"><b>Ganesh Pawar, </b> Sangli</div>
+                    <div class="testomonial_sub">Genericplus is a team of professionals, honest and always available. They are dependable, knowledgeable, competent, and go the extra mile. They are friendly and have a good attitude. You will enjoy working with them.</div>
+                  </div>
+                  <p class="carousel-item-num">2 of 2</p>
+                </div>
+              </div>
+            
+              
+              
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <img style="background-color: #32429A; border-radius: 50%; padding: 10px; padding-left: 13px; padding-right: 13px;" src="assets/img/testimonial/l_arrow.png" alt="">
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <img style="background-color: #32429A; border-radius: 50%; padding: 10px; padding-left: 13px; padding-right: 13px;" src="assets/img/testimonial/r_arrow.png" alt="">
+              </a>
+          </div>
+          </div>
+
+          
+      </div>
+    </section> 
+    
+   
+
+    <!-- Contact Section Start -->
+    <section id="contact" class="section-padding">    
+      <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" style="padding-top: 5%;">Contact Us</h2>
+      </div>
+    </div>
+      <div class="contact_container" style="padding-top: 0%; margin-top: 0%; background-color: #fff;">
+        <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.3s">   
+          <div class="col-lg-4" style="padding-top: 0%;">
+            <div class="map">
+              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7566.349710820315!2d73.93287524232798!3d18.52099886098709!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb3372703df7a8e2c!2sGenericplus%20Pharmacy%20Pvt.%20Ltd.%2C%20Pune!5e0!3m2!1sen!2sin!4v1639804647790!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+              <object style="border:0;" data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.427405870494!2d73.7949715!3d18.5095781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfb32cec18e3%3A0xe72e642f6574d6a6!2sDaksh%20Pathology%20Laboratory!5e0!3m2!1sen!2sin!4v1662615049887!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"></object>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="contact-block">
+              <h2>Daksh Pathology Laboratory</h2>
+              <h3>Veronica Building,94/95, Paud Road, Bhusari Colony, Kothrud, Pune, Maharashtra 411038</h3>
+              <h4 class="con_h41">Contact :</h4>
+              <div class="con_row1">
+                <div class="row">
+                <img style="padding-top: 8px; margin-left: 10px;" src="assets/img/Vectormail.png" height="24px" width="20px" alt="">
+                <h3 style="padding-left: 10px;"><a style="color: black;" href = "mailto: Daksh21@gmail.com">Daksh21@gmail.com</a></h3>
+                <img style="padding-top: 8px; margin-left: 30px;" src="assets/img/Vectorcall.png" height="25px" width="20px" alt="">
+                <h3 style="padding-left: 10px;"><a style="color: black;" href="tel:+000000000">+91 000000000</a></h3>
+              </div>
+            </div>
+              <div class="con_row">
+                <img style="padding-top: 10px;" src="assets/img/mail.png" alt="">
+                <img style="padding-top: 10px; padding-bottom: 10px;" src="assets/img/call.png" alt="">
+              </div>
+
+              <h4 class="con_h42">Or Submit the Form to Connect</h4>
+              
+              <form id="enquiryForm">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="text" placeholder="Full Name*" name="enquiry_name" id="enquiry_name" class="form-control" required data-error="Please enter your full name">
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="enquiry_mobile" name="enquiry_mobile" placeholder="+91 Mobile Number*" required data-error="Please enter your mobile number">
+                      <div class="help-block with-errors"></div>
+                    </div>                                 
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" placeholder="Email Address*" id="enquiry_email" class="form-control" name="enquiry_email" required data-error="Please enter your email address">
+                      <div class="help-block with-errors"></div>
+                    </div> 
+                  </div>
+                   <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="text" placeholder="Full Address" id="enquiry_address" name="enquiry_address" class="form-control" required data-error="Please enter your address">
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <select name="enquiry_state" id="enquiry_state">
+                        <option value="">Select State*</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                       
+                    </select>
+                    <div class="help-block with-errors"></div>
+                    </div>                                 
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <select name="enquiry_purpose" id="enquiry_purpose">
+                        <option value="">Select Purpose*</option>
+                        <option value="Testing">Testing</option>
+                        <option value="Report">Report</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                    <div class="help-block with-errors"></div>
+                    </div> 
+                  </div>
+                    <div style="padding-left: 20px; padding-bottom: 20px;">
+                      <button class="btn btn-common" id="form-submit" type="submit">Submit</button>
+                      <div id="msgSubmit" class="h3 text-center hidden"></div> 
+                      <div class="clearfix"></div> 
+                    </div>
+                  </div>
+                </div>            
+              </form>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Start -->
+    <footer id="footer" class="footer-area section-padding">
+    
+        <div class="container">
+          <div class="row">
+           
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+              <h3 class="footer-titel">About</h3>
+              <ul class="footer-link2">
+                <li><a href="about_us.html">About Us</a></li>
+                
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+              <h3 class="footer-titel">Policies</h3>
+              <ul class="footer-link2">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Condition</a></li>
+                <li><a href="#">Refund & Return Policy</a></li>
+               </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 social_accounts">
+              <h3 class="footer-titel">Social Media</h3>
+              <ul class="footer-link2">
+                <li><a href="#"><i class="fa-brands fa-facebook-square mr-2"></i> Facebook</a></li>
+                <li><a href="#"><i class="fa-brands fa-instagram mr-2"></i> Instagram</a></li>
+                <li><a href="#"><i class="fa-brands fa-linkedin mr-2"></i> LinkedIn</a></li>
+                <li><a href="#"><i class="fa-brands fa-twitter-square mr-2"></i> Twitter</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 social_accounts2">
+              <h3 class="footer-titel">Social Media</h3>
+              <div class="row">
+                <a href="#"><img class="img-fluid2" src="assets/img/footer/fb.png" alt=""></a>
+                <a href="#"><img class="img-fluid2" src="assets/img/footer/instagram.png" alt=""></a>
+                <a href="#"><img class="img-fluid2" src="assets/img/footer/linkedin.png" alt=""></a>
+                <a href="#"><img class="img-fluid2" src="assets/img/footer/twitter.png" alt=""></a>
+              </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+              <h3 class="footer-titel">Download The App</h3>
+              <ul class="footer-link">
+                <li>
+                  <a href="#" class="btn btn-common mt-3">GOOGLE PLAY STORE</a>
+                </li>
+             
+                </ul>
+            </div>
+            
+          </div>
+        </div>  
+      </div> 
+     
+    </footer> 
+    <!-- Footer Section End -->
+
+     <!-- Apply Now Pup-Up -->
+     <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="contact-block">
+                    <form id="workwithusForm">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <h5 class="text-center"
+                            style="font-size: 43px; color: #32429A; font-family: Helvetica Neue; font-style: normal; font-weight: normal;">
+                            Apply Now</h5>
+                          <img class="close close11" data-dismiss="modal" aria-label="Close"
+                            src="assets/img/close.png" alt="">
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group11">
+                            <input type="text" placeholder="Full Name*" id="candidate_fullname" name="candidate_fullname" class="form-control" required
+                              data-error="Please enter your full name">
+                            <div class="help-block with-errors"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group11">
+                            <input type="number" placeholder="Mobile Number*" name="candidate_mobile" id="candidate_mobile" class="form-control"
+                              required data-error="Please enter your mobile number">
+                            <div class="help-block with-errors"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group11">
+                            <input type="email" placeholder="Email Address*" name="candidate_email" id="candidate_email" class="form-control" required
+                              data-error="Please enter your email">
+                            <div class="help-block with-errors"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group11">
+                            <input type="text" placeholder="Full Address*" id="candidate_address" name="candidate_address" class="form-control" required
+                              data-error="Please enter your address">
+                            <div class="help-block with-errors"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group11">
+                              <select class="select2" name="candidate_state" id="candidate_state">
+                                <option value="">Select State*</option>
+                                
+                                  <option value="Maharashtra">Maharashtra</option>
+                                  
+                              </select>
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group11">
+                            <input type="text" class="form-control" id="candidate_pincode" name="candidate_pincode" placeholder="Pincode*"
+                              required data-error="Please enter your pincode">
+                            <div class="help-block with-errors"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group11">
+                            <!-- <select class="select22" name="candidate_job_id" id="candidate_job_id">
+                             
+                            </select> -->
+                            <input type="text" value="" name="candidate_job_id" id="candidate_job_id" class="form-control" disabled>
+
+                            <div class="help-block with-errors"></div>
+                          </div>
+                        </div>
+                       
+                        <div class="col-md-12">
+                          <div class="form-group11">
+                            <input type="text" onkeyup="countChar(this)" maxlength='400' class="form-control"
+                              id="candidate_coverLetter" name="candidate_coverLetter" placeholder="Write Cover Letter*" required
+                              data-error="Please write cover letter">
+                            <div style="padding-left: 10px;" id="charNum"></div>
+                            <div class="help-block with-errors"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <div class="form-group11">
+                            <input type="file" class="form-control" id="candidate_resume_file" name="candidate_resume_file"
+                              placeholder="Upload Resume*" required data-error="Please upload your Resume">
+                            <div class="help-block with-errors"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="submit_button">
+                            <button class="btn btn-common" id="form-submit" type="submit">Apply</button>
+                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/js/jquery-min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/jquery.nav.js"></script>
+    <script src="assets/js/scrolling-nav.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>  
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/form-validator.min.js"></script>
+    <script src="assets/js/contact-form-script.min.js"></script>
+    <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+
+      
+    <script>
+     
+       $( "#collapse11" ).click(function() {
+            $( "#partner-exp1" ).toggle();
+            document.getElementById("partner-exp2").style.display="none";
+            document.getElementById("partner-exp3").style.display="none";
+            document.getElementById("partner-exp4").style.display="none";          
+        });
+        $( "#collapse22" ).click(function() {
+            $( "#partner-exp2" ).toggle();
+            document.getElementById("partner-exp1").style.display="none";
+            document.getElementById("partner-exp3").style.display="none";
+            document.getElementById("partner-exp4").style.display="none"; 
+        });
+        $( "#collapse33" ).click(function() {
+            $( "#partner-exp3" ).toggle();
+            document.getElementById("partner-exp1").style.display="none";
+            document.getElementById("partner-exp2").style.display="none";
+            document.getElementById("partner-exp4").style.display="none"; 
+        });
+        $( "#collapse44" ).click(function() {
+            $( "#partner-exp4" ).toggle();
+            document.getElementById("partner-exp1").style.display="none";
+            document.getElementById("partner-exp2").style.display="none";
+            document.getElementById("partner-exp3").style.display="none"; 
+        });
+
+
+        // for mobile---------------------------------
+        $( "#collapse55" ).click(function() {
+            $( "#partner-exp5" ).toggle();
+            document.getElementById("partner-exp6").style.display="none";
+            document.getElementById("partner-exp7").style.display="none";
+            document.getElementById("partner-exp8").style.display="none";          
+        });
+        $( "#collapse66" ).click(function() {
+            $( "#partner-exp6" ).toggle();
+            document.getElementById("partner-exp5").style.display="none";
+            document.getElementById("partner-exp7").style.display="none";
+            document.getElementById("partner-exp8").style.display="none"; 
+        });
+        $( "#collapse77" ).click(function() {
+            $( "#partner-exp7" ).toggle();
+            document.getElementById("partner-exp5").style.display="none";
+            document.getElementById("partner-exp6").style.display="none";
+            document.getElementById("partner-exp8").style.display="none"; 
+        });
+        $( "#collapse88" ).click(function() {
+            $( "#partner-exp8" ).toggle();
+            document.getElementById("partner-exp5").style.display="none";
+            document.getElementById("partner-exp6").style.display="none";
+            document.getElementById("partner-exp7").style.display="none"; 
+        });
+    </script>
+
+    <script>
+      $(document).ready(function() {  
+        $('.border-active a').click(function(){  
+          $('.border-active a').removeClass("active-img");  
+          $(this).addClass("active-img");  
+        });  
+      });  
+      $(document).ready(function() {  
+        $('.border-active2 a').click(function(){  
+          $('.border-active2 a').removeClass("active-img2");  
+          $(this).addClass("active-img2");  
+        });  
+      });  
+    </script>
+
+    <script type="text/javascript">
+      $('#workwithusForm').submit(function(){
+          $.ajax({
+        url: "",
+        type: 'POST',
+        data : $('#workwithusForm').serialize(),
+        success: function(data){
+          console.log('form submitted');
+          alert("Form submitted successfuly!");
+          window.location.reload()
+         
+        }
+      });
+      return false;
+    });
+     </script>
+ <script type="text/javascript">
+  $('#enquiryForm').submit(function(){
+      $.ajax({
+    url: "",
+    type: 'POST',
+    data : $('#enquiryForm').serialize(),
+    success: function(data){
+      console.log('Enquiry submitted');
+      alert("Enquiry submitted successfuly!");
+      // window.location.reload();
+     
+    }
+  });
+  return false;
+});
+ </script>
+
+    <script>
+      function openModal() {
+        let dropdown22 = document.getElementById('jobs').value;
+        $('#candidate_job_id').val(dropdown22);
+        $('#staticBackdrop').modal('show');
+        
+
+
+  }
+        
+     
+  </script>
+
+    <script>
+      $(document).ready(function() {
+        $("#testimonials").owlCarousel({
+            navigation : true,
+            singleItem:true
+       });
+      
+      });
+    </script>
+    <script>
+      $(document).on("click", ".button", function () {
+       var job_title = $(this).data('job_title');
+       $(".modal-body #job_title").val( job_title );
+      });
+    </script>
+
+<script>
+  function showDropdown() {
+    document.getElementById("login_dropdown").classList.toggle("show");
+  }
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.login_img')) {
+    
+      var dropdowns = document.getElementsByClassName("dropdown-menu");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+
+<script>
+ let slider = document.querySelector('.slider'),
+  sliderList = slider.querySelector('.slider-list'),
+  sliderTrack = slider.querySelector('.slider-track'),
+  slides = slider.querySelectorAll('.slide'),
+  arrows = slider.querySelector('.slider-arrows'),
+  prev = arrows.children[0],
+  next = arrows.children[1],
+  slideWidth = slides[0].offsetWidth,
+  slideIndex = 0,
+  posInit = 0,
+  posX1 = 0,
+  posX2 = 0,
+  posY1 = 0,
+  posY2 = 0,
+  posFinal = 0,
+  isSwipe = false,
+  isScroll = false,
+  allowSwipe = true,
+  transition = true,
+  nextTrf = 0,
+  prevTrf = 0,
+  lastTrf = --slides.length * slideWidth,
+  posThreshold = slides[0].offsetWidth * 0.35,
+  trfRegExp = /([-0-9.]+(?=px))/,
+  swipeStartTime,
+  swipeEndTime,
+  getEvent = function() {
+    return (event.type.search('touch') !== -1) ? event.touches[0] : event;
+  },
+  slide = function() {
+    if (transition) {
+      sliderTrack.style.transition = 'transform .5s';
+    }
+    sliderTrack.style.transform = `translate3d(-${slideIndex * slideWidth}px, 0px, 0px)`;
+
+    prev.classList.toggle('disabled', slideIndex === 0);
+    next.classList.toggle('disabled', slideIndex === --slides.length);
+  },
+  swipeStart = function() {
+    let evt = getEvent();
+
+    if (allowSwipe) {
+
+      swipeStartTime = Date.now();
+      
+      transition = true;
+
+      nextTrf = (slideIndex + 1) * -slideWidth;
+      prevTrf = (slideIndex - 1) * -slideWidth;
+
+      posInit = posX1 = evt.clientX;
+      posY1 = evt.clientY;
+
+      sliderTrack.style.transition = '';
+
+      document.addEventListener('touchmove', swipeAction);
+      document.addEventListener('mousemove', swipeAction);
+      document.addEventListener('touchend', swipeEnd);
+      document.addEventListener('mouseup', swipeEnd);
+
+      sliderList.classList.remove('grab');
+      sliderList.classList.add('grabbing');
+    }
+  },
+  swipeAction = function() {
+
+    let evt = getEvent(),
+      style = sliderTrack.style.transform,
+      transform = +style.match(trfRegExp)[0];
+
+    posX2 = posX1 - evt.clientX;
+    posX1 = evt.clientX;
+
+    posY2 = posY1 - evt.clientY;
+    posY1 = evt.clientY;
+
+    if (!isSwipe && !isScroll) {
+      let posY = Math.abs(posY2);
+      if (posY > 7 || posX2 === 0) {
+        isScroll = true;
+        allowSwipe = false;
+      } else if (posY < 7) {
+        isSwipe = true;
+      }
+    }
+
+    if (isSwipe) {
+      if (slideIndex === 0) {
+        if (posInit < posX1) {
+          setTransform(transform, 0);
+          return;
+        } else {
+          allowSwipe = true;
+        }
+      }
+
+      // запрет ухода вправо на последнем слайде
+      if (slideIndex === --slides.length) {
+        if (posInit > posX1) {
+          setTransform(transform, lastTrf);
+          return;
+        } else {
+          allowSwipe = true;
+        }
+      }
+
+      if (posInit > posX1 && transform < nextTrf || posInit < posX1 && transform > prevTrf) {
+        reachEdge();
+        return;
+      }
+
+      sliderTrack.style.transform = `translate3d(${transform - posX2}px, 0px, 0px)`;
+    }
+
+  },
+  swipeEnd = function() {
+    posFinal = posInit - posX1;
+
+    isScroll = false;
+    isSwipe = false;
+
+    document.removeEventListener('touchmove', swipeAction);
+    document.removeEventListener('mousemove', swipeAction);
+    document.removeEventListener('touchend', swipeEnd);
+    document.removeEventListener('mouseup', swipeEnd);
+
+    sliderList.classList.add('grab');
+    sliderList.classList.remove('grabbing');
+
+    if (allowSwipe) {
+      swipeEndTime = Date.now();
+      if (Math.abs(posFinal) > posThreshold || swipeEndTime - swipeStartTime < 300) {
+        if (posInit < posX1) {
+          slideIndex--;
+        } else if (posInit > posX1) {
+          slideIndex++;
+        }
+      }
+
+      if (posInit !== posX1) {
+        allowSwipe = false;
+        slide();
+      } else {
+        allowSwipe = true;
+      }
+
+    } else {
+      allowSwipe = true;
+    }
+
+  },
+  setTransform = function(transform, comapreTransform) {
+    if (transform >= comapreTransform) {
+      if (transform > comapreTransform) {
+        sliderTrack.style.transform = `translate3d(${comapreTransform}px, 0px, 0px)`;
+      }
+    }
+    allowSwipe = false;
+  },
+  reachEdge = function() {
+    transition = false;
+    swipeEnd();
+    allowSwipe = true;
+  };
+
+sliderTrack.style.transform = 'translate3d(0px, 0px, 0px)';
+sliderList.classList.add('grab');
+
+sliderTrack.addEventListener('transitionend', () => allowSwipe = true);
+slider.addEventListener('touchstart', swipeStart);
+slider.addEventListener('mousedown', swipeStart);
+
+arrows.addEventListener('click', function() {
+  let target = event.target;
+
+  if (target.classList.contains('next')) {
+    slideIndex++;
+  } else if (target.classList.contains('prev')) {
+    slideIndex--;
+  } else {
+    return;
+  }
+
+  slide();
+});
+</script>
+
+
+<script>
+  $(function() {
+    var header = $(".navbar11");
+    $(window).scroll(function() {    
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 100) {
+            header.removeClass('navbar11').addClass("navbar22 ");
+            header.addClass("transition111");
+        } else {
+            header.removeClass("navbar22").addClass('navbar11');
+            header.addClass("transition111");
+        }
+    });
+});
+
+$(function() {
+    var header = $(".navbar-brand-bg");
+    $(window).scroll(function() {    
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 100) {
+          header.removeClass('navbar-brand-bg').addClass("navbar-brand");
+          header.addClass("transition111");
+        } else {
+          header.removeClass('navbar-brand').addClass("navbar-brand-bg");
+          header.addClass("transition111");
+        }
+    });
+});
+</script>
+
+  </body>
+</html>
